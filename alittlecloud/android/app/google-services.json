@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "513423768559",
+    "project_id": "alittlecloud-406c4",
+    "storage_bucket": "alittlecloud-406c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513423768559:android:ae528c02dbf68d99cad41a",
+        "android_client_info": {
+          "package_name": "com.example.alittlecloud"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "513423768559-3mm9c7roblvo0ldi9189vdso7f5bfj8g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.alittlecloud",
+            "certificate_hash": "cfb8228614584fc016c200a77f5e36e3721bcf7b"
+          }
+        },
+        {
+          "client_id": "513423768559-dgkk2568ljcnrrmg3mudt6i69lkfissb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZFdnK49h36kJt7PAeXR5IUNxoJV10XRo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "513423768559-dgkk2568ljcnrrmg3mudt6i69lkfissb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
