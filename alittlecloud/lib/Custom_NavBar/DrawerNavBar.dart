@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../SideNavigation/About.dart';
-import '../SideNavigation/Account.dart';
+import '../SideNavigation/My_Account.dart';
+import '../SideNavigation/Terms_Privacy.dart';
 import '../SideNavigation/Help.dart';
 import '../SideNavigation/MyDiary.dart';
 import '../SideNavigation/Settings.dart';
@@ -51,7 +52,7 @@ class NavBar extends StatelessWidget {
               Icons.account_circle_rounded,
             ),
             title: Text(
-              "Account",
+              "My Account",
               textScaleFactor: 1.2,
               style: TextStyle(fontFamily: "Roboto"),
             ),
@@ -80,7 +81,7 @@ class NavBar extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.add_chart),
             title: Text(
-              "Feedback",
+              "Feed back",
               textScaleFactor: 1.2,
               style: TextStyle(fontFamily: "Roboto"),
             ),
@@ -89,11 +90,20 @@ class NavBar extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.announcement),
             title: Text(
-              "Abount",
+              "About Us",
               textScaleFactor: 1.2,
               style: TextStyle(fontFamily: "Roboto"),
             ),
             onTap: () => selectedItem(context, 4),
+          ),
+          ListTile(
+            leading: Icon(Icons.privacy_tip),
+            title: Text(
+              "Terms & Privacy",
+              textScaleFactor: 1.2,
+              style: TextStyle(fontFamily: "Roboto"),
+            ),
+            onTap: () => selectedItem(context, 5),
           ),
           ListTile(
             leading: Icon(Icons.settings),
@@ -102,8 +112,9 @@ class NavBar extends StatelessWidget {
               textScaleFactor: 1.2,
               style: TextStyle(fontFamily: "Roboto"),
             ),
-            onTap: () => selectedItem(context, 5),
+            onTap: () => selectedItem(context, 6),
           ),
+
           Divider(color: Color.fromRGBO(0, 0, 0, 1)),
           ListTile(
             title: Text(
@@ -176,6 +187,12 @@ class NavBar extends StatelessWidget {
         ));
         break;
       case 5:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => Terms_Privacy(),
+        ));
+        break;
+
+      case 6:
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => Settings(),
         ));

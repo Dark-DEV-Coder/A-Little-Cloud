@@ -5,11 +5,19 @@ class Account extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: Text("Account"),
-          centerTitle: true,
-          backgroundColor: primaryColor,
-        ),
+    body: ListView(
+      physics: BouncingScrollPhysics(),
+      children: [
 
+        const SizedBox(height: 24),
+
+        const SizedBox(height: 24),
+
+        const SizedBox(height: 24),
+
+        const SizedBox(height: 48),
+        
+      ],
+    ),
     );
 }
