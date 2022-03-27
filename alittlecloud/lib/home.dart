@@ -41,9 +41,7 @@ class _HomeState extends State<Home> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          setState(() {
-            currentScreen = NewPost(); // if user taps on this dashboard tab will be active
-          });
+          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => NewPost()));
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
