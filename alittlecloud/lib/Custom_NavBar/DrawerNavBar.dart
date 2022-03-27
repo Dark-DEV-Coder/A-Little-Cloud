@@ -166,11 +166,11 @@ class NavBar extends StatelessWidget {
           builder: (context) => Account(),
         ));
         break;
-      case 1:
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => MyDiary(),
-        ));
-        break;
+      // case 1:
+      //   Navigator.of(context).push(MaterialPageRoute(
+      //     builder: (context) => MyDiary(),
+      //   ));
+      //   break;
       case 2:
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => Help(),
