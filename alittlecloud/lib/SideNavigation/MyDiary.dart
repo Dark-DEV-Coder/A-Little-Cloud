@@ -1,8 +1,14 @@
 import 'package:alittlecloud/Custom_NavBar/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 
-class MyDiary extends StatelessWidget {
-   MyDiary({Key? key}) : super(key: key);
+import '../color.dart';
+
+class MyDiary extends StatefulWidget{
+  @override
+  MyDiaryState createState() => MyDiaryState();
+}
+
+class MyDiaryState extends State<MyDiary> {
   final List<String> _title = <String>[];
   final List<String> _hours = <String>[];
   @override
@@ -22,7 +28,7 @@ class MyDiary extends StatelessWidget {
         return  _buildRow(_title[index], _hours[index]);
       }),
       floatingActionButton: FloatingActionButton(
-      onPressed: null,
+      onPressed: add_diary,
       child: Icon(Icons.add),
     ),
 
@@ -58,4 +64,103 @@ Widget _buildRow(String t, String h){
       ),
     );
 }
+void add_diary(){
+    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context){
+      final double w = MediaQuery.of(context).size.width;
+      final double h = MediaQuery.of(context).size.height;
+return Scaffold(
+  resizeToAvoidBottomInset: false,
+  appBar: AppBar(
+    title: Text(
+      "New diary",
+      style: TextStyle(fontSize: 16, fontFamily: "Roboto"),
+    ),
+  ),
+  body: Column(
+    children: <Widget>[
+      Container(
+        width: 0.9*w,
+        child: TextField(
+          decoration: InputDecoration(
+            hintText: "Title",
+            hintStyle: TextStyle(
+              color: Colors.grey,
+              fontSize: 16,
+              fontFamily: "Roboto",
+            ),
+            focusedBorder: new UnderlineInputBorder(
+              borderSide: BorderSide(color: GetColor.colorviolet),
+            ),
+            enabledBorder: new UnderlineInputBorder(
+              borderSide: BorderSide(color: GetColor.colorviolet),
+            ),
+          ),
+          style: TextStyle(color: Colors.black),
+          keyboardType: TextInputType.multiline,
+          maxLines: null,
+        ),
+      ),
+      Container(
+        width: w,
+        height: h * 0.35,
+        child: ConstrainedBox(
+          constraints: new BoxConstraints(maxHeight: h),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            reverse: true,
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: "Is there anything you want to tell me?",
+                hintStyle: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 16,
+                  fontFamily: "Roboto",
+                ),
+                border: InputBorder.none,
+                focusedBorder: InputBorder.none,
+                enabledBorder: InputBorder.none,
+                errorBorder: InputBorder.none,
+                disabledBorder: InputBorder.none,
+              ),
+              style: TextStyle(color: Colors.black),
+              textAlign: TextAlign.center,
+              keyboardType: TextInputType.multiline,
+              maxLines: null,
+            ),
+          ),
+        ),
+      ),
+    ],
+  ),
+  floatingActionButton: FloatingActionButton.extended(
+    onPressed: (){
+      showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return Wrap(
+            children: [
+              ListTile(
+                leading: Icon(Icons.save_alt_outlined),
+                title: Text('Save to watch later'),
+              ),
+              ListTile(
+                leading: Icon(Icons.schedule_outlined),
+                title: Text('Schedule time to delete'),
+              ),
+            ],
+          );
+        },
+      );
+    },
+    label: Text(
+      "  Save  ",
+      style: TextStyle(fontSize: 16, fontFamily: 'Roboto'),
+    ),
+    backgroundColor: GetColor.colorviolet,
+    foregroundColor: GetColor.colorgrey,
+  ),
+);
+    }));
+}
+
 }
