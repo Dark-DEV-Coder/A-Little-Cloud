@@ -57,6 +57,8 @@ class PostStaffState extends State<PostStaff> {
                   child: Text(
                     'Greyhound divisively hello coldly wonderfully marginally far upon excluding.',
                     style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
                 Row(
