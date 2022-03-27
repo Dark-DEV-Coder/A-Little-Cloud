@@ -286,7 +286,7 @@ class SignInUpScreen extends State<SignInUp> {
                             //         FirebaseFirestore.instance.collection("accounts").add(data);
                             // },
                             onPressed: () async{ // get one data from firebase
-                              // DocumentSnapshot variable = await FirebaseFirestore.instance.collection("accounts").doc("AC01").get();
+                              DocumentSnapshot variable = await FirebaseFirestore.instance.collection("accounts").doc("AC01").get();
                               if (datausername.text == ""){
                                 showDialog<String>( // show notification
                                     context: context,

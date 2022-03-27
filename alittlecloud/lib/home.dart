@@ -23,7 +23,7 @@ class _HomeState extends State<Home> {
       drawer: NavBar(),
       appBar: CustomAppBar(),
       body: listpost(),
-      floatingActionButton: buildFloatingActionButton(),
+      floatingActionButton: buildFloatingActionButton(context),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: buildBottomAppBar(),
     );
