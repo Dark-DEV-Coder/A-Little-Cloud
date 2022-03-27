@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'SideNavigation/About.dart';
+import 'SideNavigation/Account.dart';
+import 'SideNavigation/Help.dart';
+import 'SideNavigation/MyDiary.dart';
+import 'SideNavigation/Settings.dart';
+import 'SideNavigation/Feedback.dart';
 const Color darkText = Color(0xFF253840);
 const String fontName = 'Roboto';
 
@@ -49,7 +55,18 @@ class NavBar extends StatelessWidget {
               textScaleFactor: 1.2,
               style: TextStyle(fontFamily: "Roboto"),
             ),
-            onTap: () => null,
+            onTap: () => selectedItem(context, 0),
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.book_outlined,
+            ),
+            title: Text(
+              "My Diary",
+              textScaleFactor: 1.2,
+              style: TextStyle(fontFamily: "Roboto"),
+            ),
+            onTap: () => selectedItem(context, 1),
           ),
           ListTile(
             leading: Icon(Icons.headset_mic_outlined),
@@ -58,7 +75,7 @@ class NavBar extends StatelessWidget {
               textScaleFactor: 1.2,
               style: TextStyle(fontFamily: "Roboto"),
             ),
-            onTap: () => null,
+              onTap: () => selectedItem(context, 2),
           ),
           ListTile(
             leading: Icon(Icons.add_chart),
@@ -67,7 +84,7 @@ class NavBar extends StatelessWidget {
               textScaleFactor: 1.2,
               style: TextStyle(fontFamily: "Roboto"),
             ),
-            onTap: () => null,
+            onTap: () => selectedItem(context, 3),
           ),
           ListTile(
             leading: Icon(Icons.announcement),
@@ -76,7 +93,16 @@ class NavBar extends StatelessWidget {
               textScaleFactor: 1.2,
               style: TextStyle(fontFamily: "Roboto"),
             ),
-            onTap: () => null,
+            onTap: () => selectedItem(context, 4),
+          ),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text(
+              "Settings",
+              textScaleFactor: 1.2,
+              style: TextStyle(fontFamily: "Roboto"),
+            ),
+            onTap: () => selectedItem(context, 5),
           ),
           Divider(color: Color.fromRGBO(0, 0, 0, 1)),
           ListTile(
@@ -103,4 +129,58 @@ class NavBar extends StatelessWidget {
       ),
     );
   }
+
+  Widget buildMenuItem({
+    required String text,
+    required IconData icon,
+    VoidCallback? onTap,
+  }) {
+    final color = Colors.white;
+    final hoverColor = Colors.red;
+
+    return ListTile(
+      leading: Icon(icon, color: color),
+      title: Text(text, style: TextStyle(color: color)),
+      hoverColor: hoverColor,
+      onTap: onTap,
+    );
+  }
+
+  void selectedItem(BuildContext context, int index) {
+    Navigator.of(context).pop();
+
+    switch (index) {
+      case 0:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => Account(),
+        ));
+        break;
+      case 1:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => MyDiary(),
+        ));
+        break;
+      case 2:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => Help(),
+        ));
+        break;
+      case 3:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => feedback(),
+        ));
+        break;
+      case 4:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => About(),
+        ));
+        break;
+      case 5:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => Settings(),
+        ));
+        break;
+    }
+  }
 }
+
