@@ -60,6 +60,8 @@ class listpostState extends State<listpost> {
                           Text(
                             'Greyhound divisively hello coldly wonderfully marginally far upon excluding.',
                             style: TextStyle(color: Colors.white),
+                              maxLines: 3,
+                              overflow: TextOverflow.ellipsis,
                           ),
                           TextButton(onPressed: null, child: Text("Read more")),
                         ],
