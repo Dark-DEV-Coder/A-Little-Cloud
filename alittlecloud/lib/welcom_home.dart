@@ -1,3 +1,4 @@
+import 'package:alittlecloud/color.dart';
 import 'package:alittlecloud/home.dart';
 import 'package:alittlecloud/post_staff.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ class WelcomHomeState extends State<WelcomHome> {
     // TODO: implement build
     return Scaffold(
       body: Container(
-        color: Color.fromRGBO(106, 183, 223, 1.0),
+        color: GetColor.coloraqua,
         child: Center(
             child: Column(
               // mainAxisAlignment: MainAxisAlignment.center,
@@ -72,7 +73,7 @@ class WelcomHomeState extends State<WelcomHome> {
       floatingActionButton: FloatingActionButton(
         onPressed: Screen2,
         child: Icon(Icons.arrow_forward_outlined,size: 40),
-        backgroundColor: Color.fromRGBO(106, 183, 223, 1.0),
+        backgroundColor: GetColor.coloraqua,
         elevation: 0,
       ),
     );
@@ -86,7 +87,7 @@ class WelcomHomeState extends State<WelcomHome> {
       final double hcon = 0.55 * h;
       return Scaffold(
         body: Container(
-          color: Color.fromRGBO(106, 183, 223, 1.0),
+          color: GetColor.coloraqua,
           child: Center(
               child: Column(
                 // mainAxisAlignment: MainAxisAlignment.center,
@@ -194,7 +195,7 @@ class WelcomHomeState extends State<WelcomHome> {
             Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Home()));
           },
           child: Icon(Icons.arrow_forward_outlined,size: 40),
-          backgroundColor: Color.fromRGBO(106, 183, 223, 1.0),
+          backgroundColor: GetColor.coloraqua,
           elevation: 0,
         ),
       );

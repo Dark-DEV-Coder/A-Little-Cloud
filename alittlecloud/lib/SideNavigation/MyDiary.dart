@@ -15,6 +15,7 @@ class MyDiaryState extends State<MyDiary> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
+      backgroundColor: GetColor.colorContainer,
       appBar: AppBar(
         title: Text("MyDiary"),
         centerTitle: true,
@@ -30,6 +31,7 @@ class MyDiaryState extends State<MyDiary> {
       floatingActionButton: FloatingActionButton(
       onPressed: add_diary,
       child: Icon(Icons.add),
+        backgroundColor: GetColor.coloraqua,
     ),
 
     );
@@ -75,6 +77,7 @@ return Scaffold(
       "New diary",
       style: TextStyle(fontSize: 16, fontFamily: "Roboto"),
     ),
+    backgroundColor: GetColor.coloraqua,
   ),
   body: Column(
     children: <Widget>[

@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:alittlecloud/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:alittlecloud/Icon/icon3dot_icons.dart';
@@ -21,7 +22,7 @@ class PostStaffState extends State<PostStaff> {
     // TODO: implement build
     return Material(
       child: Container(
-          color: Colors.grey,
+          color: GetColor.colorContainer,
           child: ListView.builder(itemBuilder: (context, index) {
             if (index >= _user.length) {
               _user.add("abc123");
@@ -35,7 +36,7 @@ class PostStaffState extends State<PostStaff> {
   Widget _buildRow(String u1, String t1) {
     return Container(
       margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-      color: Colors.white,
+
       child: Column(
         children: <Widget>[
           Card(
