@@ -12,6 +12,7 @@ import 'ButtonNav/Settings.dart';
 import 'Custom_NavBar/DrawerNavBar.dart';
 import 'ListPost.dart';
 import 'Custom_NavBar/custom_app_bar.dart';
+import 'color.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -39,6 +40,7 @@ class _HomeState extends State<Home> {
         bucket: bucket,
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: GetColor.coloraqua,
         child: Icon(Icons.add),
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => NewPost()));
