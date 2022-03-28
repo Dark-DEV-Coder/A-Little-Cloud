@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../SideNavigation/About.dart';
-import '../SideNavigation/Account.dart';
 import '../SideNavigation/Help.dart';
 import '../SideNavigation/MyDiary.dart';
+import '../SideNavigation/My_Account.dart';
 import '../SideNavigation/Settings.dart';
 import '../SideNavigation/Feedback.dart';
 const Color darkText = Color(0xFF253840);
