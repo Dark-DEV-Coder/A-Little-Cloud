@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
 
 class GetColor{
   static Color colorviolet = new Color.fromRGBO(62, 60, 99, 1.0);

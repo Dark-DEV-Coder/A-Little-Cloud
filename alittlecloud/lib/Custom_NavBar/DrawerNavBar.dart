@@ -1,10 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../SideNavigation/About.dart';
 import '../SideNavigation/Help.dart';
 import '../SideNavigation/MyDiary.dart';
 import '../SideNavigation/My_Account.dart';
-import '../SideNavigation/Settings.dart';
 import '../SideNavigation/Feedback.dart';
 const Color darkText = Color(0xFF253840);
 const String fontName = 'Roboto';
@@ -95,15 +95,7 @@ class NavBar extends StatelessWidget {
             ),
             onTap: () => selectedItem(context, 4),
           ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text(
-              "Settings",
-              textScaleFactor: 1.2,
-              style: TextStyle(fontFamily: "Roboto"),
-            ),
-            onTap: () => selectedItem(context, 5),
-          ),
+
           Divider(color: Color.fromRGBO(0, 0, 0, 1)),
           ListTile(
             title: Text(
@@ -175,12 +167,76 @@ class NavBar extends StatelessWidget {
           builder: (context) => About(),
         ));
         break;
-      case 5:
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => Settings(),
-        ));
-        break;
+
     }
+  }
+  Row buildNotificationOptionRow(String title, bool isActive) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          title,
+          style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+              color: Colors.grey[600]),
+        ),
+        Transform.scale(
+            scale: 0.7,
+            child: CupertinoSwitch(
+              value: isActive,
+              onChanged: (bool val) {},
+            ))
+      ],
+    );
+  }
+  GestureDetector buildAccountOptionRow(BuildContext context, String title) {
+    return GestureDetector(
+      onTap: () {
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text(title),
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text("Option 1"),
+                    Text("Option 2"),
+                    Text("Option 3"),
+                  ],
+                ),
+                actions: [
+                  FlatButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Text("Close")),
+                ],
+              );
+            });
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+                color: Colors.grey[600],
+              ),
+            ),
+            Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.grey,
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 
