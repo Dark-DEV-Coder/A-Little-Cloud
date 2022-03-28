@@ -328,8 +328,8 @@ class SignInUpScreen extends State<SignInUp> {
                                     showDialog<String>( // show notification
                                       context: context,
                                       builder: (BuildContext context) => AlertDialog(
-                                        title: Text("Password not match"),
-                                        content: Text("Please make sure your password match.",style: TextStyle(fontFamily: "Roboto",),),
+                                        title: Text("Username or Password not match"),
+                                        content: Text("Please make sure your username or password match.",style: TextStyle(fontFamily: "Roboto",),),
                                         actions: <Widget>[
                                           TextButton(
                                             onPressed: () => Navigator.pop(context, 'Close'),
@@ -342,7 +342,11 @@ class SignInUpScreen extends State<SignInUp> {
                                   else{
                                     String u = getaccount.docs.single.get("Username");
                                     String p = getaccount.docs.single.get("Password");
-                                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => WelcomHome(u,p)));
+                                    int sta = getaccount.docs.single.get("State");
+                                    if (sta == 1)
+                                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => WelcomHome(u,p)));
+                                    else
+                                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => WelcomHome(u,p)));
                                   }
                                 }
                               }
