@@ -7,12 +7,11 @@ import 'package:flutter/src/services/asset_bundle.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp,DeviceOrientation.portraitDown]).then((value) => runApp(MyApp()));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -328,8 +327,8 @@ class SignInUpScreen extends State<SignInUp> {
                                     showDialog<String>( // show notification
                                       context: context,
                                       builder: (BuildContext context) => AlertDialog(
-                                        title: Text("Username or Password not match"),
-                                        content: Text("Please make sure your username or password match.",style: TextStyle(fontFamily: "Roboto",),),
+                                        title: Text("Password not match"),
+                                        content: Text("Please make sure your password match.",style: TextStyle(fontFamily: "Roboto",),),
                                         actions: <Widget>[
                                           TextButton(
                                             onPressed: () => Navigator.pop(context, 'Close'),
@@ -342,11 +341,7 @@ class SignInUpScreen extends State<SignInUp> {
                                   else{
                                     String u = getaccount.docs.single.get("Username");
                                     String p = getaccount.docs.single.get("Password");
-                                    int sta = getaccount.docs.single.get("State");
-                                    if (sta == 1)
-                                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => WelcomHome(u,p)));
-                                    else
-                                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => WelcomHome(u,p)));
+                                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => WelcomHome(u,p)));
                                   }
                                 }
                               }

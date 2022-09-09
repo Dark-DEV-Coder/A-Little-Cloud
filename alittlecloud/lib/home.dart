@@ -1,186 +1,98 @@
-import 'dart:developer';
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:alittlecloud/Icon/icon3dot_icons.dart';
 
-
-import 'ButtonNav/Home_Post.dart';
-import 'ButtonNav/Motivation.dart';
-import 'ButtonNav/NewPost.dart';
-import 'ButtonNav/Notification.dart';
-import 'ButtonNav/Settings.dart';
-import 'Custom_NavBar/DrawerNavBar.dart';
-import 'ListPost.dart';
-import 'Custom_NavBar/custom_app_bar.dart';
-import 'color.dart';
-
 class Home extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  HomeState createState() => HomeState();
 }
 
-class _HomeState extends State<Home> {
-
-  int currentTab =0;
-  final List<Widget> screens = [
-    DashBoard(),
-    Motivation(),
-    Notifications(),
-    Settings(),
-  ];
-  final PageStorageBucket bucket = PageStorageBucket();
-  Widget currentScreen = DashBoard();
+class HomeState extends State<Home> {
+  final List<String> _user = <String>[];
+  final List<String> _text = <String>[];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: NavBar(),
-      appBar: CustomAppBar(),
-      body: PageStorage(
-        child: currentScreen,
-        bucket: bucket,
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: GetColor.coloraqua,
-        child: Icon(Icons.add),
-        onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => NewPost()));
-        },
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
-        notchMargin: 7,
-        child: Container(
-          height: 60,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  MaterialButton(
-                    minWidth: 40,
-                    onPressed: () {
-                      setState(() {
-                        currentScreen =
-                            DashBoard(); // if user taps on this dashboard tab will be active
-                        currentTab = 0;
-                      });
-                    },
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(
-                          Icons.home,
-                          color: currentTab == 0 ? Colors.blue : Colors.grey,
-                        ),
-                        Text(
-                          'Home',
-                          style: TextStyle(
-                            color: currentTab == 0 ? Colors.blue : Colors.grey,
-                            fontFamily: "Roboto",
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  MaterialButton(
-                    minWidth: 40,
-                    onPressed: () {
-                      setState(() {
-                        currentScreen =
-                            Motivation(); // if user taps on this dashboard tab will be active
-                        currentTab = 1;
-                      });
-                    },
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(
-                          Icons.book_outlined,
-                          color: currentTab == 1 ? Colors.blue : Colors.grey,
-                        ),
-                        Text(
-                          'Motivation',
-                          style: TextStyle(
-                            color: currentTab == 1 ? Colors.blue : Colors.grey,
-                            fontFamily: "Roboto",
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-
-              // Right Tab bar icons
-
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  MaterialButton(
-                    minWidth: 40,
-                    onPressed: () {
-                      setState(() {
-                        currentScreen =
-                            Notifications(); // if user taps on this dashboard tab will be active
-                        currentTab = 2;
-                      });
-                    },
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(
-                          Icons.notifications_active,
-                          color: currentTab == 2 ? Colors.blue : Colors.grey,
-                        ),
-                        Text(
-                          'Notification',
-                          style: TextStyle(
-                            color: currentTab == 2 ? Colors.blue : Colors.grey,
-                            fontFamily: "Roboto",
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  MaterialButton(
-                    minWidth: 40,
-                    onPressed: () {
-                      setState(() {
-                        currentScreen =
-                            Settings(); // if user taps on this dashboard tab will be active
-                        currentTab = 3;
-                      });
-                    },
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(
-                          Icons.settings,
-                          color: currentTab == 3 ? Colors.blue : Colors.grey,
-                        ),
-                        Text(
-                          'Settings',
-                          style: TextStyle(
-                            color: currentTab == 3 ? Colors.blue : Colors.grey,
-                            fontFamily: "Roboto",
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              )
-
-            ],
-          ),
-        ),
-      ),
+    final double w = MediaQuery.of(context).size.width;
+    final double h = MediaQuery.of(context).size.height;
+    final double wcon = 0.70 * w;
+    final double hcon = 0.55 * h;
+    // TODO: implement build
+    return Material(
+      child: Container(
+          color: Colors.grey,
+          child: ListView.builder(itemBuilder: (context, index) {
+            if (index >= _user.length) {
+              _user.add("abc123");
+              _text.add("dkajsdfahsdfuihasdfiuhasdfuddddddddddddddddddddddđlkáđoáioáidóihdfgióahgoihàugoihúadfioguhàg");
+            }
+            return _buildRow(_user[index], _text[index]);
+          })),
     );
   }
 
+  Widget _buildRow(String u1, String t1) {
+    return Container(
+      margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+      color: Colors.white,
+      child: Column(
+        children: <Widget>[
+          Card(
+            clipBehavior: Clip.antiAlias,
+            child: Column(
+              children: [
+                ListTile(
+                  leading: Icon(Icons.arrow_drop_down_circle),
+                  title: const Text('Card title 1'),
+                  subtitle: Text(
+                    'Secondary Text',
+                    style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                  ),
+                  trailing: Icon(Icons.more_vert_outlined),
+                ),
+                Container(
+                  height: 194,
+                  color: Colors.red,
+                  alignment: Alignment.center,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'Greyhound divisively hello coldly wonderfully marginally far upon excluding.',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        TextButton(onPressed: null, child: Text("Read more")),
+                      ],
+                    )
+                  ),
+                ),
+                Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: ButtonBar(
+                        alignment: MainAxisAlignment.end,
+                        children: [
+                          IconButton(
+                            onPressed: null,
+                            icon: Icon(Icons.insert_comment_outlined,color: Color.fromRGBO(60, 62, 99, 1.0),),
+                          ),
+                          IconButton(
+                            onPressed: null,
+                            icon: Icon(Icons.favorite_border,color: Color.fromRGBO(60, 62, 99, 1.0),),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
-
-
-

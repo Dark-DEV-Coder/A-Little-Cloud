@@ -1,6 +1,5 @@
 import 'dart:ffi';
 
-import 'package:alittlecloud/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:alittlecloud/Icon/icon3dot_icons.dart';
@@ -22,7 +21,7 @@ class PostStaffState extends State<PostStaff> {
     // TODO: implement build
     return Material(
       child: Container(
-          color: GetColor.colorContainer,
+          color: Colors.grey,
           child: ListView.builder(itemBuilder: (context, index) {
             if (index >= _user.length) {
               _user.add("abc123");
@@ -36,7 +35,7 @@ class PostStaffState extends State<PostStaff> {
   Widget _buildRow(String u1, String t1) {
     return Container(
       margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-
+      color: Colors.white,
       child: Column(
         children: <Widget>[
           Card(
@@ -58,8 +57,6 @@ class PostStaffState extends State<PostStaff> {
                   child: Text(
                     'Greyhound divisively hello coldly wonderfully marginally far upon excluding.',
                     style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
                 Row(
