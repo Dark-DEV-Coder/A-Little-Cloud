@@ -35,9 +35,9 @@ class SplashScreenPage extends StatelessWidget {
     // TODO: implement build
     return SplashScreen(
       seconds: 4,
-      navigateAfterSeconds: new SignInUp(),
+      navigateAfterSeconds: SignInUp(),
       backgroundColor: Color.fromRGBO(106, 183, 223, 1.0),
-      image: new Image.asset(
+      image: Image.asset(
         'assets/images/logo.png',
       ),
       photoSize: 150.0,
@@ -85,12 +85,12 @@ class SplashScreenPage extends StatelessWidget {
 
 class SignInUp extends StatefulWidget {
   @override
-  SignInUpScreen createState() => new SignInUpScreen();
+  SignInUpScreen createState() => SignInUpScreen();
 }
 
 class SignInUpScreen extends State<SignInUp> {
-  TextEditingController datausername = new TextEditingController();
-  TextEditingController datapassword = new TextEditingController();
+  TextEditingController datausername = TextEditingController();
+  TextEditingController datapassword = TextEditingController();
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -123,39 +123,47 @@ class SignInUpScreen extends State<SignInUp> {
                 children: <Widget>[
                   Expanded(
                     flex: 5,
-                    child: new FlatButton(
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        backgroundColor: Color.fromRGBO(247, 225, 70, 1.0),
+                        shape: RoundedRectangleBorder(
+                            side: BorderSide(
+                              color: Colors.blue,
+                              width: 1,
+                              style: BorderStyle.solid,
+                            ),
+                            borderRadius: BorderRadius.circular(30.0)),
+                      ),
                       onPressed: Login,
                       child: Text(
                         "Sign in",
-                        style: TextStyle(fontSize: 16.0,fontFamily: "Roboto",),
+                        style: TextStyle(
+                          fontSize: 16.0,
+                        ),
                       ),
-                      color: Color.fromRGBO(247, 225, 70, 1.0),
-                      shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                            color: Colors.blue,
-                            width: 1,
-                            style: BorderStyle.solid,
-                          ),
-                          borderRadius: BorderRadius.circular(30.0)),
                     ),
                   ),
                   Expanded(flex: 1, child: Text("")),
                   Expanded(
                     flex: 5,
-                    child: new FlatButton(
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                            side: BorderSide(
+                              color: Colors.blue,
+                              width: 1,
+                              style: BorderStyle.solid,
+                            ),
+                            borderRadius: BorderRadius.circular(30.0)),
+                      ),
                       onPressed: Logup,
                       child: Text(
                         "Sign up",
-                        style: TextStyle(fontSize: 16.0,fontFamily: "Roboto",),
+                        style: TextStyle(
+                          fontSize: 16.0,
+                        ),
                       ),
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                            color: Colors.blue,
-                            width: 1,
-                            style: BorderStyle.solid,
-                          ),
-                          borderRadius: BorderRadius.circular(30.0)),
                     ),
                   ),
                 ],
@@ -168,7 +176,8 @@ class SignInUpScreen extends State<SignInUp> {
   }
 
   void Login() {
-    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (BuildContext context) {
       final double w1 = MediaQuery.of(context).size.width;
       final double h1 = MediaQuery.of(context).size.height;
       final double wcon1 = 0.75 * w1;
@@ -211,14 +220,18 @@ class SignInUpScreen extends State<SignInUp> {
                         Expanded(
                             child: Center(
                                 child: TextField(
-                                  controller:datausername,
+                          controller: datausername,
                           decoration: InputDecoration(
                             hintText: "Username",
-                            hintStyle: TextStyle(color: Colors.white, fontSize: 16,fontFamily: "Roboto",),
-                            focusedBorder: new UnderlineInputBorder(
+                            hintStyle: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontFamily: "Roboto",
+                            ),
+                            focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.white),
                             ),
-                            enabledBorder: new UnderlineInputBorder(
+                            enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.white),
                             ),
                           ),
@@ -234,14 +247,18 @@ class SignInUpScreen extends State<SignInUp> {
                         Expanded(
                             child: Center(
                                 child: TextField(
-                                  controller:datapassword,
+                          controller: datapassword,
                           decoration: InputDecoration(
                             hintText: "Password",
-                            hintStyle: TextStyle(color: Colors.white, fontSize: 16,fontFamily: "Roboto",),
-                            focusedBorder: new UnderlineInputBorder(
+                            hintStyle: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontFamily: "Roboto",
+                            ),
+                            focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.white),
                             ),
-                            enabledBorder: new UnderlineInputBorder(
+                            enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.white),
                             ),
                           ),
@@ -257,21 +274,35 @@ class SignInUpScreen extends State<SignInUp> {
                       children: <Widget>[
                         Text(
                           'No account?',
-                          style: TextStyle(fontSize: 12, color: Colors.white,fontFamily: "Roboto",),
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.white,
+                            fontFamily: "Roboto",
+                          ),
                         ),
                         TextButton(
                           onPressed: Logup,
                           child: Text(
                             "Sign up",
-                            style: TextStyle(fontSize: 12, color: Color.fromRGBO(62, 60, 99, 1.0),fontFamily: "Roboto",),
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Color.fromRGBO(62, 60, 99, 1.0),
+                              fontFamily: "Roboto",
+                            ),
                           ),
                         ),
-                        SizedBox(width: 0.06*wcon1,),
+                        SizedBox(
+                          width: 0.06 * wcon1,
+                        ),
                         TextButton(
                           onPressed: () {},
                           child: Text(
                             "Forgot your password?",
-                            style: TextStyle(fontSize: 12, color: Color.fromRGBO(62, 60, 99, 1.0),fontFamily: "Roboto",),
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Color.fromRGBO(62, 60, 99, 1.0),
+                              fontFamily: "Roboto",
+                            ),
                           ),
                         )
                       ],
@@ -280,103 +311,153 @@ class SignInUpScreen extends State<SignInUp> {
                       children: <Widget>[
                         Expanded(
                             child: Center(
-                          child: FlatButton(
+                          child: TextButton(
+                            style: TextButton.styleFrom(
+                              minimumSize: Size(wcon1, 40),
+                              backgroundColor:
+                                  Color.fromRGBO(247, 225, 70, 1.0),
+                              shape: RoundedRectangleBorder(
+                                  side: BorderSide(
+                                    color: Color.fromRGBO(247, 225, 70, 1.0),
+                                    width: 1,
+                                    style: BorderStyle.solid,
+                                  ),
+                                  borderRadius: BorderRadius.circular(30.0)),
+                            ),
                             // onPressed: (){ // push data up firebase
                             //         Map<String,dynamic> data ={"ID_Permission":"QL","Username":datausername.text,"Password":datapassword.text,"State":1};
                             //         FirebaseFirestore.instance.collection("accounts").add(data);
                             // },
-                            onPressed: () async{ // get one data from firebase
+                            onPressed: () async {
+                              // get one data from firebase
                               // DocumentSnapshot variable = await FirebaseFirestore.instance.collection("accounts").doc("AC01").get();
-                              if (datausername.text == ""){
-                                showDialog<String>( // show notification
-                                    context: context,
-                                    builder: (BuildContext context) => AlertDialog(
-                                      title: Text("Username is empty"),
-                                      content: Text("Please enter your username.",style: TextStyle(fontFamily: "Roboto",),),
-                                      actions: <Widget>[
-                                        TextButton(
-                                          onPressed: () => Navigator.pop(context, 'Close'),
-                                          child: Text('Close',style: TextStyle(fontFamily: "Roboto",),),
-                                        ),
-                                      ],
+                              if (datausername.text == "") {
+                                showDialog<String>(
+                                  // show notification
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      AlertDialog(
+                                    title: Text("Username is empty"),
+                                    content: Text(
+                                      "Please enter your username.",
+                                      style: TextStyle(
+                                        fontFamily: "Roboto",
+                                      ),
                                     ),
+                                    actions: <Widget>[
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(context, 'Close'),
+                                        child: Text(
+                                          'Close',
+                                          style: TextStyle(
+                                            fontFamily: "Roboto",
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 );
-                              }
-                              else{
-                                if (datapassword.text == ""){
-                                  showDialog<String>( // show notification
+                              } else {
+                                if (datapassword.text == "") {
+                                  showDialog<String>(
+                                    // show notification
                                     context: context,
-                                    builder: (BuildContext context) => AlertDialog(
+                                    builder: (BuildContext context) =>
+                                        AlertDialog(
                                       title: Text("Password is empty"),
-                                      content: Text("Please enter your password.",style: TextStyle(fontFamily: "Roboto",),),
+                                      content: Text(
+                                        "Please enter your password.",
+                                        style: TextStyle(
+                                          fontFamily: "Roboto",
+                                        ),
+                                      ),
                                       actions: <Widget>[
                                         TextButton(
-                                          onPressed: () => Navigator.pop(context, 'Close'),
-                                          child: Text('Close',style: TextStyle(fontFamily: "Roboto",),),
+                                          onPressed: () =>
+                                              Navigator.pop(context, 'Close'),
+                                          child: Text(
+                                            'Close',
+                                            style: TextStyle(
+                                              fontFamily: "Roboto",
+                                            ),
+                                          ),
                                         ),
                                       ],
                                     ),
                                   );
-                                }
-                                else{
-                                  var getaccount = await FirebaseFirestore.instance.collection("accounts")
-                                      .where("Username", isEqualTo: datausername.text)
-                                      .where("Password",isEqualTo: datapassword.text)
+                                } else {
+                                  var getaccount = await FirebaseFirestore
+                                      .instance
+                                      .collection("accounts")
+                                      .where("Username",
+                                          isEqualTo: datausername.text)
+                                      .where("Password",
+                                          isEqualTo: datapassword.text)
                                       .get();
-                                  if (getaccount.size==0) {
-                                    showDialog<String>( // show notification
+                                  if (getaccount.size == 0) {
+                                    showDialog<String>(
+                                      // show notification
                                       context: context,
-                                      builder: (BuildContext context) => AlertDialog(
+                                      builder: (BuildContext context) =>
+                                          AlertDialog(
                                         title: Text("Password not match"),
-                                        content: Text("Please make sure your password match.",style: TextStyle(fontFamily: "Roboto",),),
+                                        content: Text(
+                                          "Please make sure your password match.",
+                                          style: TextStyle(
+                                            fontFamily: "Roboto",
+                                          ),
+                                        ),
                                         actions: <Widget>[
                                           TextButton(
-                                            onPressed: () => Navigator.pop(context, 'Close'),
-                                            child: Text('Close',style: TextStyle(fontFamily: "Roboto",),),
+                                            onPressed: () =>
+                                                Navigator.pop(context, 'Close'),
+                                            child: Text(
+                                              'Close',
+                                              style: TextStyle(
+                                                fontFamily: "Roboto",
+                                              ),
+                                            ),
                                           ),
                                         ],
                                       ),
                                     );
-                                  }
-                                  else{
-                                    String u = getaccount.docs.single.get("Username");
-                                    String p = getaccount.docs.single.get("Password");
-                                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => WelcomHome(u,p)));
+                                  } else {
+                                    String u =
+                                        getaccount.docs.single.get("Username");
+                                    String p =
+                                        getaccount.docs.single.get("Password");
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (BuildContext context) =>
+                                                WelcomHome(u, p)));
                                   }
                                 }
                               }
-
-                          },
-                          //   onPressed: (){ // get all data from firebase
-                          //     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => alldata()));
-                          //   },
-                          //   onPressed: () => showDialog<String>( // show notification
-                          //       context: context,
-                          //       builder: (BuildContext context) => AlertDialog(
-                          //         title: Text("Password not match"),
-                          //         content: Text("Please make sure your password match."),
-                          //         actions: <Widget>[
-                          //           TextButton(
-                          //               onPressed: () => Navigator.pop(context, 'Close'),
-                          //               child: Text('Close'),
-                          //           ),
-                          //         ],
-                          //       ),
-                          //   ),
+                            },
+                            //   onPressed: (){ // get all data from firebase
+                            //     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => alldata()));
+                            //   },
+                            //   onPressed: () => showDialog<String>( // show notification
+                            //       context: context,
+                            //       builder: (BuildContext context) => AlertDialog(
+                            //         title: Text("Password not match"),
+                            //         content: Text("Please make sure your password match."),
+                            //         actions: <Widget>[
+                            //           TextButton(
+                            //               onPressed: () => Navigator.pop(context, 'Close'),
+                            //               child: Text('Close'),
+                            //           ),
+                            //         ],
+                            //       ),
+                            //   ),
                             child: Text(
                               "Continue",
-                              style: TextStyle(fontSize: 16.0,color: Color.fromRGBO(62, 60, 99, 1.0),fontFamily: "Roboto",),
+                              style: TextStyle(
+                                  fontSize: 16.0,
+                                  color: Color.fromRGBO(62, 60, 99, 1.0)),
                             ),
-                            color: Color.fromRGBO(247, 225, 70, 1.0),
-                            shape: RoundedRectangleBorder(
-                                side: BorderSide(
-                                  color: Color.fromRGBO(247, 225, 70, 1.0),
-                                  width: 1,
-                                  style: BorderStyle.solid,
-                                ),
-                                borderRadius: BorderRadius.circular(30.0)),
-                            minWidth: wcon1,
-                            height: 40,
                           ),
                         ))
                       ],
@@ -390,8 +471,10 @@ class SignInUpScreen extends State<SignInUp> {
       );
     }));
   }
+
   void Logup() {
-    Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (BuildContext context) {
       final double w1 = MediaQuery.of(context).size.width;
       final double h1 = MediaQuery.of(context).size.height;
       final double wcon1 = 0.85 * w1;
@@ -413,16 +496,16 @@ class SignInUpScreen extends State<SignInUp> {
                       children: <Widget>[
                         Expanded(
                             child: Center(
-                              child: Text(
-                                'Sign up',
-                                style: TextStyle(
-                                  fontSize: 24,
-                                  decoration: TextDecoration.none,
-                                  color: Color.fromRGBO(247, 225, 70, 1.0),
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ))
+                          child: Text(
+                            'Sign up',
+                            style: TextStyle(
+                              fontSize: 24,
+                              decoration: TextDecoration.none,
+                              color: Color.fromRGBO(247, 225, 70, 1.0),
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ))
                       ],
                     ),
                     SizedBox(
@@ -433,18 +516,19 @@ class SignInUpScreen extends State<SignInUp> {
                         Expanded(
                             child: Center(
                                 child: TextField(
-                                  decoration: InputDecoration(
-                                    hintText: "Username",
-                                    hintStyle: TextStyle(color: Colors.white, fontSize: 16),
-                                    focusedBorder: new UnderlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.white),
-                                    ),
-                                    enabledBorder: new UnderlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.white),
-                                    ),
-                                  ),
-                                  style: TextStyle(color: Colors.white),
-                                )))
+                          decoration: InputDecoration(
+                            hintText: "Username",
+                            hintStyle:
+                                TextStyle(color: Colors.white, fontSize: 16),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                          ),
+                          style: TextStyle(color: Colors.white),
+                        )))
                       ],
                     ),
                     SizedBox(
@@ -455,19 +539,20 @@ class SignInUpScreen extends State<SignInUp> {
                         Expanded(
                             child: Center(
                                 child: TextField(
-                                  decoration: InputDecoration(
-                                    hintText: "Password",
-                                    hintStyle: TextStyle(color: Colors.white, fontSize: 16),
-                                    focusedBorder: new UnderlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.white),
-                                    ),
-                                    enabledBorder: new UnderlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.white),
-                                    ),
-                                  ),
-                                  style: TextStyle(color: Colors.white),
-                                  obscureText: true,
-                                )))
+                          decoration: InputDecoration(
+                            hintText: "Password",
+                            hintStyle:
+                                TextStyle(color: Colors.white, fontSize: 16),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                          ),
+                          style: TextStyle(color: Colors.white),
+                          obscureText: true,
+                        )))
                       ],
                     ),
                     SizedBox(
@@ -478,19 +563,20 @@ class SignInUpScreen extends State<SignInUp> {
                         Expanded(
                             child: Center(
                                 child: TextField(
-                                  decoration: InputDecoration(
-                                    hintText: "Age",
-                                    hintStyle: TextStyle(color: Colors.white, fontSize: 16),
-                                    focusedBorder: new UnderlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.white),
-                                    ),
-                                    enabledBorder: new UnderlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.white),
-                                    ),
-                                  ),
-                                  style: TextStyle(color: Colors.white),
-                                  obscureText: true,
-                                )))
+                          decoration: InputDecoration(
+                            hintText: "Age",
+                            hintStyle:
+                                TextStyle(color: Colors.white, fontSize: 16),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                          ),
+                          style: TextStyle(color: Colors.white),
+                          obscureText: true,
+                        )))
                       ],
                     ),
                     SizedBox(
@@ -498,7 +584,9 @@ class SignInUpScreen extends State<SignInUp> {
                     ),
                     Row(
                       children: <Widget>[
-                        SizedBox(width: 0.59*wcon1,),
+                        SizedBox(
+                          width: 0.59 * wcon1,
+                        ),
                         Text(
                           'Have account?',
                           style: TextStyle(fontSize: 12, color: Colors.white),
@@ -507,7 +595,9 @@ class SignInUpScreen extends State<SignInUp> {
                           onPressed: Login,
                           child: Text(
                             "Sign in",
-                            style: TextStyle(fontSize: 12, color: Color.fromRGBO(62, 60, 99, 1.0)),
+                            style: TextStyle(
+                                fontSize: 12,
+                                color: Color.fromRGBO(62, 60, 99, 1.0)),
                           ),
                         )
                       ],
@@ -516,24 +606,28 @@ class SignInUpScreen extends State<SignInUp> {
                       children: <Widget>[
                         Expanded(
                             child: Center(
-                              child: FlatButton(
-                                onPressed: () {},
-                                child: Text(
-                                  "Continue",
-                                  style: TextStyle(fontSize: 16.0,color: Color.fromRGBO(62, 60, 99, 1.0)),
-                                ),
-                                color: Color.fromRGBO(247, 225, 70, 1.0),
-                                shape: RoundedRectangleBorder(
-                                    side: BorderSide(
-                                      color: Color.fromRGBO(247, 225, 70, 1.0),
-                                      width: 1,
-                                      style: BorderStyle.solid,
-                                    ),
-                                    borderRadius: BorderRadius.circular(30.0)),
-                                minWidth: wcon1,
-                                height: 40,
-                              ),
-                            ))
+                          child: TextButton(
+                            style: TextButton.styleFrom(
+                              minimumSize: Size(wcon1, 40),
+                              backgroundColor:
+                                  Color.fromRGBO(247, 225, 70, 1.0),
+                              shape: RoundedRectangleBorder(
+                                  side: BorderSide(
+                                    color: Color.fromRGBO(247, 225, 70, 1.0),
+                                    width: 1,
+                                    style: BorderStyle.solid,
+                                  ),
+                                  borderRadius: BorderRadius.circular(30.0)),
+                            ),
+                            onPressed: () {},
+                            child: Text(
+                              "Continue",
+                              style: TextStyle(
+                                  fontSize: 16.0,
+                                  color: Color.fromRGBO(62, 60, 99, 1.0)),
+                            ),
+                          ),
+                        ))
                       ],
                     ),
                   ],
@@ -546,5 +640,3 @@ class SignInUpScreen extends State<SignInUp> {
     }));
   }
 }
-
-
